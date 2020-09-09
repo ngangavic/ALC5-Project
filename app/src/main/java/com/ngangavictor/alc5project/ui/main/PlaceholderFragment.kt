@@ -5,9 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,7 +26,7 @@ class PlaceholderFragment : Fragment() {
 
     private lateinit var pageViewModel: PageViewModel
 
-    lateinit var recyclerView:RecyclerView
+    lateinit var recyclerView: RecyclerView
     lateinit var hoursRecyclerViewAdapter: HoursRecyclerViewAdapter
     lateinit var skillsRecyclerViewAdapter: SkillsRecyclerViewAdapter
 
@@ -70,13 +68,17 @@ class PlaceholderFragment : Fragment() {
         fun newInstance(sectionNumber: Int): PlaceholderFragment {
             return PlaceholderFragment().apply {
                 arguments = Bundle().apply {
-                    if (sectionNumber==1){
-                        gadsHours.enqueue( object : Callback<List<HoursModel>> {
-                            override fun onResponse(call: Call<List<HoursModel>>?, response: Response<List<HoursModel>>?) {
+                    if (sectionNumber == 1) {
+                        gadsHours.enqueue(object : Callback<List<HoursModel>> {
+                            override fun onResponse(
+                                call: Call<List<HoursModel>>?,
+                                response: Response<List<HoursModel>>?
+                            ) {
 
-                                if(response?.body() != null)
-                                    Log.e("HOURS",response.body()!!.toString())
-                    hoursRecyclerViewAdapter= HoursRecyclerViewAdapter(response!!.body()!!)
+                                if (response?.body() != null)
+                                    Log.e("HOURS", response.body()!!.toString())
+                                hoursRecyclerViewAdapter =
+                                    HoursRecyclerViewAdapter(response!!.body()!!)
                                 hoursRecyclerViewAdapter.notifyDataSetChanged()
                                 recyclerView.adapter = hoursRecyclerViewAdapter
                             }
@@ -85,13 +87,17 @@ class PlaceholderFragment : Fragment() {
 
                             }
                         })
-                    }else if (sectionNumber==2){
-                        gadsSkill.enqueue( object : Callback<List<SkillIqModel>> {
-                            override fun onResponse(call: Call<List<SkillIqModel>>?, response: Response<List<SkillIqModel>>?) {
+                    } else if (sectionNumber == 2) {
+                        gadsSkill.enqueue(object : Callback<List<SkillIqModel>> {
+                            override fun onResponse(
+                                call: Call<List<SkillIqModel>>?,
+                                response: Response<List<SkillIqModel>>?
+                            ) {
 
-                                if(response?.body() != null)
-                                    Log.e("SKILL",response!!.body()!![0].toString())
-                                skillsRecyclerViewAdapter= SkillsRecyclerViewAdapter(response!!.body()!!)
+                                if (response?.body() != null)
+                                    Log.e("SKILL", response!!.body()!![0].toString())
+                                skillsRecyclerViewAdapter =
+                                    SkillsRecyclerViewAdapter(response!!.body()!!)
                                 skillsRecyclerViewAdapter.notifyDataSetChanged()
                                 recyclerView.adapter = skillsRecyclerViewAdapter
                             }

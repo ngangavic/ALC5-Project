@@ -11,11 +11,11 @@ interface Gads {
     fun getHours(): Call<List<HoursModel>>
 
     @GET("/api/skilliq")
-    fun getSkill():Call<List<SkillIqModel>>
+    fun getSkill(): Call<List<SkillIqModel>>
 
     companion object {
 
-        fun create() : Gads {
+        fun create(): Gads {
 
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
