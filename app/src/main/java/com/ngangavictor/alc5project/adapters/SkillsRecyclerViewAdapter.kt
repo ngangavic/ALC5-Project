@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ngangavictor.alc5project.R
 import com.ngangavictor.alc5project.holders.SkillHolder
 import com.ngangavictor.alc5project.utils.SkillIqModel
+import com.squareup.picasso.Picasso
 
 class SkillsRecyclerViewAdapter(private val skills: List<SkillIqModel>) :
     RecyclerView.Adapter<SkillHolder>() {
@@ -25,6 +26,7 @@ class SkillsRecyclerViewAdapter(private val skills: List<SkillIqModel>) :
         holder.textViewHours.text =
             skills[position].score + " learning hours," + skills[position].country
         holder.textViewName.text = skills[position].name
+        Picasso.get().load(skills[position].badgeUrl).into(holder.imageView)
     }
 
     override fun getItemCount(): Int {

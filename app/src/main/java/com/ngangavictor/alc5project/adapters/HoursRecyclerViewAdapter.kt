@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ngangavictor.alc5project.R
 import com.ngangavictor.alc5project.holders.HoursHolder
 import com.ngangavictor.alc5project.utils.HoursModel
+import com.squareup.picasso.Picasso
 
 class HoursRecyclerViewAdapter(private val hours: List<HoursModel>) :
     RecyclerView.Adapter<HoursHolder>() {
@@ -26,6 +27,7 @@ class HoursRecyclerViewAdapter(private val hours: List<HoursModel>) :
         holder.textViewHours.text =
             hours[position].hours + " learning hours," + hours[position].country
         holder.textViewName.text = hours[position].name
+        Picasso.get().load(hours[position].badgeUrl).into(holder.imageView)
     }
 
     override fun getItemCount(): Int {
