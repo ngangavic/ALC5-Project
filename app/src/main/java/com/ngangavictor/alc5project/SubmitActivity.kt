@@ -90,8 +90,7 @@ class SubmitActivity : AppCompatActivity() {
         }
 
         buttonYes.setOnClickListener {
-successAlert()
-        }
+errorAlert()        }
 
         alertDialog=alert.create()
         alertDialog.show()
@@ -100,6 +99,16 @@ successAlert()
 
     private fun successAlert(){
         val customLayout=layoutInflater.inflate(R.layout.success_alert,null)
+
+        val alert=AlertDialog.Builder(this)
+        alert.setView(customLayout)
+
+        alertDialog=alert.create()
+        alertDialog.show()
+    }
+
+    private fun errorAlert(){
+        val customLayout=layoutInflater.inflate(R.layout.error_alert,null)
 
         val alert=AlertDialog.Builder(this)
         alert.setView(customLayout)
