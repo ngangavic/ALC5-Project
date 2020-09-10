@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
-        val appBarLayout:AppBarLayout=findViewById(R.id.appBarLayout)
+        val appBarLayout: AppBarLayout = findViewById(R.id.appBarLayout)
         appBarLayout.findViewById<Button>(R.id.action_button_submit).setOnClickListener {
-            startActivity(Intent(this,SubmitActivity::class.java))
+            startActivity(Intent(this, SubmitActivity::class.java))
             finish()
         }
 
