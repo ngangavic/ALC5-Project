@@ -7,6 +7,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
+import com.ngangavictor.alc5project.utils.Gads
+import com.ngangavictor.alc5project.utils.Submit
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SubmitActivity : AppCompatActivity() {
 
@@ -18,6 +24,8 @@ class SubmitActivity : AppCompatActivity() {
     private lateinit var editTextGithubLink:EditText
 
     private lateinit var buttonSubmit:Button
+
+    private lateinit var alertDialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,5 +50,51 @@ class SubmitActivity : AppCompatActivity() {
             finish()
         }
 
+        buttonSubmit.setOnClickListener {
+            confirmAlert()
+//            val  email=editTextEmail.text.toString()
+//            val  fname=editTextFName.text.toString()
+//            val  lname=editTextLName.text.toString()
+//            val  github=editTextGithubLink.text.toString()
+//            val submitProject = Submit.create().submitProject(email,fname,lname,github)
+//            submitProject.enqueue(object :Callback<Void>{
+//                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+//                    if (response.isSuccessful){
+//
+//                    }else{
+//
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<Void>, t: Throwable) {
+//
+//                }
+//
+//            })
+//
+        }
+
     }
+
+    private fun confirmAlert(){
+        val customLayout=layoutInflater.inflate(R.layout.confirm_alert,null)
+
+        val alert=AlertDialog.Builder(this)
+        alert.setView(customLayout)
+        val buttonYes=customLayout.findViewById<Button>(R.id.buttonYes)
+        val imageViewCancel=customLayout.findViewById<ImageView>(R.id.imageViewCancel)
+
+        imageViewCancel.setOnClickListener {
+            alertDialog.cancel()
+        }
+
+        buttonYes.setOnClickListener {
+
+        }
+
+        alertDialog=alert.create()
+        alertDialog.show()
+
+    }
+
 }
