@@ -80,6 +80,7 @@ class SubmitActivity : AppCompatActivity() {
         val customLayout=layoutInflater.inflate(R.layout.confirm_alert,null)
 
         val alert=AlertDialog.Builder(this)
+        alert.setCancelable(false)
         alert.setView(customLayout)
         val buttonYes=customLayout.findViewById<Button>(R.id.buttonYes)
         val imageViewCancel=customLayout.findViewById<ImageView>(R.id.imageViewCancel)
@@ -89,12 +90,22 @@ class SubmitActivity : AppCompatActivity() {
         }
 
         buttonYes.setOnClickListener {
-
+successAlert()
         }
 
         alertDialog=alert.create()
         alertDialog.show()
 
+    }
+
+    private fun successAlert(){
+        val customLayout=layoutInflater.inflate(R.layout.success_alert,null)
+
+        val alert=AlertDialog.Builder(this)
+        alert.setView(customLayout)
+
+        alertDialog=alert.create()
+        alertDialog.show()
     }
 
 }
