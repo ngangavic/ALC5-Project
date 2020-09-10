@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         val appBarLayout:AppBarLayout=findViewById(R.id.appBarLayout)
         appBarLayout.findViewById<Button>(R.id.action_button_submit).setOnClickListener {
             startActivity(Intent(this,SubmitActivity::class.java))
+            finish()
         }
 
     }
