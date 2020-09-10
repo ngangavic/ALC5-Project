@@ -24,7 +24,7 @@ class SkillsRecyclerViewAdapter(private val skills: List<SkillIqModel>) :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: SkillHolder, position: Int) {
         holder.textViewHours.text =
-            skills[position].score + " learning hours," + skills[position].country
+            skills[position].score + " Skill IQ Score," + skills[position].country
         holder.textViewName.text = skills[position].name
         Picasso.get().load(skills[position].badgeUrl).into(holder.imageView)
     }
