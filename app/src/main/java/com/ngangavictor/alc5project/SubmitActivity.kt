@@ -52,25 +52,7 @@ class SubmitActivity : AppCompatActivity() {
 
         buttonSubmit.setOnClickListener {
             confirmAlert()
-//            val  email=editTextEmail.text.toString()
-//            val  fname=editTextFName.text.toString()
-//            val  lname=editTextLName.text.toString()
-//            val  github=editTextGithubLink.text.toString()
-//            val submitProject = Submit.create().submitProject(email,fname,lname,github)
-//            submitProject.enqueue(object :Callback<Void>{
-//                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-//                    if (response.isSuccessful){
-//
-//                    }else{
-//
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<Void>, t: Throwable) {
-//
-//                }
-//
-//            })
+
 //
         }
 
@@ -90,7 +72,28 @@ class SubmitActivity : AppCompatActivity() {
         }
 
         buttonYes.setOnClickListener {
-errorAlert()        }
+            val  email=editTextEmail.text.toString()
+            val  fname=editTextFName.text.toString()
+            val  lname=editTextLName.text.toString()
+            val  github=editTextGithubLink.text.toString()
+            val submitProject = Submit.create().submitProject(email,fname,lname,github)
+            submitProject.enqueue(object :Callback<Void>{
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    if (response.isSuccessful){
+                        alertDialog.cancel()
+successAlert()
+                    }else{
+                        alertDialog.cancel()
+errorAlert()
+                    }
+                }
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+errorAlert()
+                }
+
+            })
+        }
 
         alertDialog=alert.create()
         alertDialog.show()
